@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/page/login.dart';
-import 'page/sign-in.dart';
-import 'page/information-square.dart';
+import 'page/sign_in.dart';
 
 void main() {
   runApp(const MyApp());
