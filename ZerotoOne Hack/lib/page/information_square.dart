@@ -1,36 +1,32 @@
 import 'package:flutter/material.dart';
-import '../page/information-square.dart';
-import '../page/personal-profile.dart';
+import 'help_form.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class InformationSquare extends StatelessWidget {
+  const InformationSquare({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: const Text('Information Square'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              child: const Text('Information Square'),
+              child: const Text('Back to Home'),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => InformationSquare()),
-                );
+                Navigator.pop(context);
               },
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              child: const Text('Personal Profile'),
+              child: const Text('Help Form'),
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => PersonalProfile()),
+                  MaterialPageRoute(builder: (context) => HelpForm()),
                 );
               },
             ),
@@ -40,3 +36,4 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
