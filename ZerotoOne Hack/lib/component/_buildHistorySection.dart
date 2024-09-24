@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import '../colors.dart';
+import '../utils/historyData.dart'; // Import the data.dart file
 
 class BuildHistorySection extends StatefulWidget {
   const BuildHistorySection({super.key});
@@ -10,50 +11,7 @@ class BuildHistorySection extends StatefulWidget {
 }
 
 class _BuildHistorySectionState extends State<BuildHistorySection> {
-  bool isOfferingHelp =
-      true; // True for "Offering help", False for "Asking for help"
-
-  // Sample data - replace with your actual data
-  final offeringHelpList = [
-    {
-      'item': 'Pads',
-      'date': '20/08/2024 12:40',
-      'distance': '85m',
-      'position': '3 Floor, XX Library',
-      'status': 'Sent out'
-    },
-    {
-      'item': 'wet wipe',
-      'date': '20/08/2024 12:50',
-      'distance': '100m',
-      'position': 'N113 CSIT bldg',
-      'status': 'Still available'
-    },
-    {
-      'item': 'wet wipe2',
-      'date': '20/08/2024 12:50',
-      'distance': '100m',
-      'position': 'N113 CSIT bldg',
-      'status': 'Still available'
-    },
-  ];
-
-  final askingForHelpList = [
-    {
-      'item': 'Tissues',
-      'date': '21/08/2024 10:30',
-      'distance': '50m',
-      'position': '2 Floor, YY Building',
-      'status': 'Received'
-    },
-    {
-      'item': 'Bandage',
-      'date': '21/08/2024 11:45',
-      'distance': '120m',
-      'position': 'Health Center',
-      'status': 'Waiting'
-    },
-  ];
+  bool isOfferingHelp = true; // True for "Offering help", False for "Asking for help"
 
   @override
   Widget build(BuildContext context) {
@@ -154,7 +112,10 @@ class _BuildHistorySectionState extends State<BuildHistorySection> {
   }
 
   Widget _buildOfferList() {
-    final offers = isOfferingHelp ? offeringHelpList : askingForHelpList;
+    final offers = isOfferingHelp ? HistoryData.offeringHelpList : HistoryData.askingForHelpList;
+
+    // Debug print to check the length of the list
+    print('Number of offers: ${offers.length}');
 
     return Container(
       padding: const EdgeInsets.only(bottom: 20),
@@ -171,7 +132,15 @@ class _BuildHistorySectionState extends State<BuildHistorySection> {
         ),
         itemBuilder: (context, index) {
           final offer = offers[index];
-          return _buildOfferItem(offer);
+          // Debug print to check each offer
+          print('Offer $index: ${offer.item}');
+          return _buildOfferItem({
+            'item': offer.item,
+            'date': offer.date,
+            'distance': offer.distance.toString(),
+            'position': offer.position,
+            'status': offer.status.toString(),
+          });
         },
       ),
     );
@@ -263,9 +232,21 @@ class _BuildHistorySectionState extends State<BuildHistorySection> {
   void _deleteOffer(Map<String, String> offer) {
     setState(() {
       if (isOfferingHelp) {
-        offeringHelpList.removeWhere((item) => item == offer);
+        HistoryData.offeringHelpList.removeWhere((item) =>
+          item.item == offer['item'] &&
+          item.date == offer['date'] &&
+          item.distance.toString() == offer['distance'] &&
+          item.position == offer['position'] &&
+          item.status.toString() == offer['status']
+        );
       } else {
-        askingForHelpList.removeWhere((item) => item == offer);
+        HistoryData.askingForHelpList.removeWhere((item) =>
+          item.item == offer['item'] &&
+          item.date == offer['date'] &&
+          item.distance.toString() == offer['distance'] &&
+          item.position == offer['position'] &&
+          item.status.toString() == offer['status']
+        );
       }
     });
   }
