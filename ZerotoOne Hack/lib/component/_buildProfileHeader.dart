@@ -6,7 +6,7 @@ import '../component/_buildPointsIndicator.dart';
 import '../page/personalProfileEdit.dart';
 
 class BuildProfileHeader extends StatelessWidget {
-  const BuildProfileHeader({super.key});
+  BuildProfileHeader({super.key});
   final user = UserData.myUser;
 
   @override
@@ -105,7 +105,7 @@ class BuildProfileHeader extends StatelessWidget {
                   ),
                 ),
               ),
-              const BuildPointsIndicator(),
+              BuildPointsIndicator(),
             ],
           ),
         ],
