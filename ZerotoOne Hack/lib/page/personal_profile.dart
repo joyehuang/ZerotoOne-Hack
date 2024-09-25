@@ -29,13 +29,13 @@ class PersonalProfile extends StatelessWidget {
           )
         ],
       ),
-      body: const Column(
+      body: Column(
         children: [
           BuildProfileHeader(),
-          Expanded(
+          const Expanded(
             child: BuildHistorySection(),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
       ),
       bottomNavigationBar: _buildBottomNavBar(),

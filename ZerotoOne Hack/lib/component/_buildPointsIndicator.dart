@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../utils/userData.dart';
 
 class BuildPointsIndicator extends StatelessWidget {
-  const BuildPointsIndicator({super.key});
+  BuildPointsIndicator({super.key});
   final user = UserData.myUser;
 
   @override
