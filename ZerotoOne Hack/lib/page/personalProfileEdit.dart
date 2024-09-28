@@ -1,7 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import '../utils/userData.dart';
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 
 class PersonalProfileEdit extends StatefulWidget {
   const PersonalProfileEdit({super.key});
@@ -12,20 +12,20 @@ class PersonalProfileEdit extends StatefulWidget {
 
 class _PersonalProfileEditState extends State<PersonalProfileEdit> {
 
-  Future<void> _pickImage() async {
-  try {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+//   Future<void> _pickImage() async {
+//   try {
+//     final ImagePicker picker = ImagePicker();
+//     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     
-    if (image != null) {
-      print('Image path: ${image.path}');
-      // Handle the image
-    }
-  } catch (e) {
-    print('Error picking image: $e');
-    // Handle the error (e.g., show a dialog to the user)
-  }
-}
+//     if (image != null) {
+//       print('Image path: ${image.path}');
+//       // Handle the image
+//     }
+//   } catch (e) {
+//     print('Error picking image: $e');
+//     // Handle the error (e.g., show a dialog to the user)
+//   }
+// }
 
   var user = UserData.myUser;
   @override
